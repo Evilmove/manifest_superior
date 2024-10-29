@@ -34,8 +34,8 @@
     <linkfile src="root.bp" dest="Android.bp" />
     <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
   </project>
-
   <project path="build/blueprint" name="android_build_blueprint" groups="pdk,tradefed" remote="superior" />
+  <project path="build/release" name="android_build_release" remote="superior" />
 
   <!-- CodeAurora additions -->
   <project path="hardware/qcom-caf/sm8150/audio" name="android_hardware_qcom_audio" groups="qcom,msmnile" revision="fifteen-caf-sm8150" remote="superior" />
@@ -43,7 +43,9 @@
   <project path="vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um" name="android_vendor_qcom_opensource_data-ipa-cfg-mgr-legacy-um" groups="qcom,lahaina" remote="superior" />
   
   <!-- Device Repos -->
-  <project path="device/superior/sepolicy" name="android_device_superior_sepolicy" remote="superior" /> 
+  <project path="device/superior/sepolicy" name="android_device_superior_sepolicy" remote="superior" />
+  <project path="device/qcom/sepolicy-legacy-um" name="android_device_qcom_sepolicy-legacy-um" remote="superior" />
+  <project path="kernel/configs" name="android_kernel_configs" groups="vts,pdk" remote="superior" />
 
   <!-- External Repos -->
   <project path="external/dtc" name="android_external_dtc" remote="superior" />
@@ -70,12 +72,43 @@
   
   <!-- Hardware Repos -->
   <project path="hardware/google/pixel" name="android_hardware_google_pixel" remote="superior" />
+  <project path="hardware/superior/interfaces" name="android_hardware_superior_interfaces" remote="superior" />
+  <project path="hardware/interfaces" name="android_hardware_interfaces" remote="superior" />
   <project path="hardware/libhardware" name="android_hardware_libhardware" groups="pdk" remote="superior" />
+  <project path="hardware/qcom-caf/common" name="android_hardware_qcom-caf_common" groups="qcom" remote="superior" >
+    <!-- add guard for AOSP hardware/qcom dir -->
+    <linkfile src="os_pickup_aosp.mk" dest="hardware/qcom/Android.mk" />
+    <!-- add guards for CAF repositories -->
+    <linkfile src="os_pickup_sepolicy_vndr.mk" dest="device/qcom/sepolicy_vndr/SEPolicy.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/msm8953/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8953/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8996/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8996/Android.mk" />
+    <linkfile src="os_pickup.bp" dest="hardware/qcom-caf/msm8998/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/msm8998/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm660/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm660/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sdm845/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sdm845/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8150/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8150/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8250/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8250/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8350/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8350/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8450/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8450/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8450/Android.mk" />
+    <linkfile src="os_pickup_audio-ar.mk" dest="hardware/qcom-caf/sm8550/audio/Android.mk" />
+    <linkfile src="os_pickup_qssi.bp" dest="hardware/qcom-caf/sm8550/Android.bp" />
+    <linkfile src="os_pickup.mk" dest="hardware/qcom-caf/sm8550/Android.mk" />
+  </project>
   <project path="hardware/qcom/wlan" name="android_hardware_qcom_wlan" remote="superior" />
 
   <!-- Packages repos -->
   <project path="packages/apps/ParanoidSense" name="android_packages_apps_ParanoidSense" remote="superior" />
   <project path="packages/apps/Settings" name="android_packages_apps_Settings" remote="superior" />
+  <project path="packages/apps/SuperiorLab" name="android_packages_apps_SuperiorLab" remote="superior" />
   <project path="packages/modules/Virtualization" name="android_packages_modules_Virtualization" groups="pdk" remote="superior" />
   <project path="packages/overlays/Themes" name="android_packages_overlays_Themes" remote="superior" />
 
@@ -87,11 +120,14 @@
   <project path="vendor/support" name="android_vendor_support" remote="superior" />
 
   <!-- System Repos -->
+  <project path="system/bpf" name="android_system_bpf" remote="superior" />
   <project path="system/core" name="android_system_core" remote="superior" />
   <project path="system/extras" name="android_system_extras" remote="superior" />
   <project path="system/libhidl" name="android_system_libhidl" remote="superior" />
   <project path="system/libziparchive" name="android_system_libziparchive" remote="superior" />
+  <project path="system/security" name="android_system_security" remote="superior" />
   <project path="system/sepolicy" name="android_system_sepolicy" remote="superior" />
   <project path="system/update_engine" name="android_system_update_engine" remote="superior" />
+  <project path="system/vold" name="android_system_vold" remote="superior" />
 
 </manifest>
